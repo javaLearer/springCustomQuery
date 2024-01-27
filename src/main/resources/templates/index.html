@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+    <h3>Employee List</h3>
+    <!--<a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>-->
+    <table style="width:80%" border="1"
+           class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>CRR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee:${allemplist}">
+            <td th:text="${employee.empid}"></td>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.crr}"></td>
+            <td><a th:href="@{/thymeleaf/showFormForUpdate/{id}(id=${employee.empid})}"
+                   class="btn btn-primary">Update</a>
+                <a th:href="@{/thymeleaf/deleteEmployee/{id}(id=${employee.empid})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+        <a th:href="@{/thymeleaf/addnew}"
+           class="btn btn-danger">Add New</a>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
